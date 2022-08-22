@@ -5,6 +5,7 @@ use App\Http\Controllers\HojeController;
 use App\Http\Controllers\TesteController;
 use App\Http\Controllers\TabController;
 use App\Http\Controllers\PiramideController;
+use App\Http\Controllers\ConeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -52,4 +53,6 @@ Route::get('/teste', [TesteController::class, 'teste']);
 
 Route::get('/ctab/{valor?}/{inicio?}/{fim?}', [TabController::class, 'tab']);
 
-Route::get('/piramide/{h}/{ab}/{tt?}', [PiramideController::class, 'piramide']);
+Route::get('/piramide/{h?}/{ab?}/{tt?}', [PiramideController::class, 'index'])->where("h","[0-9.999]+")->where("ab","[0-9.999]+")->where("tt","[1-3]+");
+
+Route::get('/cone/{h?}/{r?}/{nivel?}', [ConeController::class, 'index'])->where("r","[0-9.999]+")->where("h","[0-9.999]+")->where("nivel","[1-3]+");
